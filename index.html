@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Sujuna 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #ffd6ec, #ffe4e1);
+      height: 100%;
+      width: 100%;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    #page1 {
+      display: flex;
+    }
+
+    .clickable-img {
+      width: 90%;
+      max-width: 250px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .clickable-img:hover {
+      transform: scale(1.05);
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff0f5;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.5em;
+      color: #880e4f;
+      z-index: 10;
+      animation: fadeIn 1s ease-in-out;
+      max-width: 90%;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      padding: 8px 20px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .glow-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2em;
+      color: #ff1493;
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
+      animation: glow 2s ease-in-out infinite alternate;
+      margin-bottom: 20px;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: 2px solid #ff69b4;
+      white-space: nowrap;
+      margin: 20px auto;
+      letter-spacing: 2px;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+      font-size: 1em;
+      color: #d63384;
+      max-width: 100%;
+    }
+
+    .image-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff69b4; }
+      to { text-shadow: 0 0 20px #ff1493; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #ff69b4; }
+    }
+
+    @media (max-width: 600px) {
+      .glow-text {
+        font-size: 1.8em;
+      }
+
+      .typewriter {
+        font-size: 0.95em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" loop>
+    <source src="https://media.vocaroo.com/mp3/18jdRdwPy6ma" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <!-- Page 1 -->
+  <div class="page" id="page1">
+    <h1 class="glow-text">Click her picture 💖</h1>
+    <img src="sujuna1.jpg" alt="Sujuna Photo" class="clickable-img" onclick="goToPage2()">
+  </div>
+
+  <!-- Page 2 -->
+  <div class="page" id="page2">
+    <div class="image-row">
+      <img src="sujuna2.jpg" alt="Sujuna Again" class="clickable-img">
+      <img src="sujuna3.jpg" alt="Sujuna More" class="clickable-img">
+    </div>
+    <div class="typewriter">Wishing you smiles, hugs, and sweet surprises... 🎉</div>
+    <button class="close-btn" onclick="showPopup()">Show Secret Message ✨</button>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+    "You're the kind of friend everyone wishes they had — beautiful, brave, and unbelievably kind." 🌸<br>
+    <button class="close-btn" onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    function goToPage2() {
+      document.getElementById('page1').style.display = 'none';
+      document.getElementById('page2').style.display = 'flex';
+
+      const music = document.getElementById('bgMusic');
+      music.play().catch(() => {
+        alert('Tap anywhere on the page to allow music to play 🎵');
+      });
+    }
+
+    function showPopup() {
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
